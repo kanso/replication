@@ -230,6 +230,21 @@ exports.stop = function (doc, callback, /*optional*/options) {
 
 
 /**
+ * Calls old /_replicator API
+ */
+
+exports._replicate = function (options, callback) {
+    var req = {
+        type: 'POST',
+        url: '/_replicate',
+        contentType: 'application/json',
+        data: JSON.stringify(options)
+    };
+    db.request(req, callback);
+};
+
+
+/**
  * replication methods cannot be called server-side
  */
 
